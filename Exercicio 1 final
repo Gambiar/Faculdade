@@ -1,0 +1,36 @@
+#Atividade pratica de lógica de programação e algoritmos 2022
+print("Bem vindo a loja de pisos e revestimentos Sergio Andrew Farias")
+
+#entrada dos valores pelo usuário
+valorproduto = float(input("Entre com o valor do produto: "))
+print("O valor do produto é de: {}".format(valorproduto))
+qtproduto = int(input('Entre com a quantidade: '))
+print('A quantidade de produto é de: {}'.format(qtproduto))
+
+#total sem desconto
+subtotal = qtproduto * valorproduto
+
+#composições das variáveis sem e com desconto
+
+#Se for até 4 unidades, não há desconto
+if qtproduto <= 4:
+    valorfinal = subtotal
+    print('O valor sem desconto é de: R$ {:.2f}'.format(subtotal))
+
+#Com 5 á 19 unidades o desconto será de 3%
+elif 5 <= qtproduto <= 19:
+    valorfinal = (subtotal * (1 - 0.03)) #desconto de 3%
+    print('O valor sem desconto é de: R$ {:.2f}'.format(subtotal))
+    print('O valor com desconto é de: R$ {:.2f} (desconto de 3%)'.format(valorfinal))
+
+#Com 20 á 99 unidades o desconto será de 6%
+elif 20 <= qtproduto <= 99:
+    valorfinal = (subtotal - subtotal * 0.06) #desconto de 6%
+    print('O valor sem desconto é de: R$ {:.2f}'.format(subtotal))
+    print('O valor com desconto é de: R$ {:.2f} (desconto de 6%)'.format(valorfinal))
+
+#Acima de 100 unidades o desconto será de 10%
+else:
+    valorfinal = (subtotal - subtotal * 0.10) #desconto de 10%
+    print('O valor sem desconto é de: R$ {:.2f}'.format(subtotal))
+    print('O valor com desconto é de: R$ {:.2f} (desconto de 10%)'.format(valorfinal))
