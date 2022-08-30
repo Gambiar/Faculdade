@@ -1,0 +1,82 @@
+#Inicio do programa para feijoada de Sergio Andrew Farias
+
+# ------------------Começo da função volumeFeijoada----------
+def volumeFeijoada():
+    while True:
+        try:
+            vol = int(input('Digite qual a quantidade de feijoada deseja (ml)? '))
+            if vol < 300 or vol > 5000:
+                print('Não aceitamos porções menores que 300ml ou maiores que 5l. Tente novamente!')
+            elif vol >= 300 or vol <= 5000:
+                return vol * 0.08
+            else:
+                print()
+                continue
+        except ValueError:
+            print('Você digitou um valor não númerico. Repita a operação')
+# ---------------------Fim da função volumeFeijoada----------
+
+# -------------------Começo da função opcaoFeijoada----------
+def opcaoFeijoada():
+    while True:
+        tipofeijao = (input('Entre com a opção de feijoada desejada:\n'
+                            'b - Básica (Feijão + paiol + costelinha)\n'
+                            'p - Premium (Feijão + paiol + costelinha + partes de porco)\n'
+                            's - Suprema (Feijão + paiol + costelinha + partes do porco + charque + calabresa + bacon)\n'
+                            'Sua escolha foi: '))
+        basica = 1
+        if tipofeijao == 'b' or tipofeijao == 'p' or tipofeijao == 's':
+            if tipofeijao == 'b':
+                return basica * 1
+            elif tipofeijao == 'p':
+                return basica * 1.25
+            elif tipofeijao == 's':
+                return basica * 1.5
+        else:
+            print('Você não digitou uma opção válida')
+            continue
+# ----------------------Fim da função opcaoFeijoada----------
+
+# ----------Começo da função acompanhamentoFeijoada----------
+def acompanhamentofeijoada():
+    subtotal = 0    #para acumular valor dentro da função
+    while True:
+        try:
+            acomp = int(input('Deseja algum acompamento: \n'
+                              '0- Não desejo mais acompanhamentos (encerrar pedido)	0,00\n'
+                              '1- 200g de arroz                                        5,00\n'
+                              '2- 150g de farofa especial                              6,00\n'
+                              '3- 100g de couve cozida	                                7,00\n'
+                              '4- 1 laranja descascada	                                3,00\n'
+                              'Sua escolha foi: '))
+
+            if 0 <= acomp <= 4:
+                if acomp == 0:
+                    return subtotal #retornando ao main
+                elif acomp == 1:
+                    subtotal += 5
+                elif acomp == 2:
+                    subtotal += 6
+                elif acomp == 3:
+                    subtotal += 7
+                elif acomp == 4:
+                    subtotal += 3
+                continue
+            else:
+                print('Você digitou um acompanhamento que não existe')
+                continue
+        except ValueError:
+            print('Você digitou um valor não númerico. Repita a operação')
+# -------------Fim da função acompanhamentoFeijoada----------
+
+# -----------------------------------Começo do main----------
+print('Bem vindo a feijoada do Sergio Andrew Farias')
+#declaração de variaveis as funções
+volume = volumeFeijoada()
+opcao = opcaoFeijoada()
+acompanha = acompanhamentofeijoada()
+total = (volume * opcao + acompanha)    #equação de cobrança da empresa
+#resultado final
+print(f'O Valor a ser pago é R$ {total:.2f} (volume = R$ {volume:.2f} * R$ {opcao:.2f} opção + acompanhamento R$ {acompanha:.2f})\n'
+      f'Obrigado pela preferência!\n')
+# --------------------------------------Fim do main----------
