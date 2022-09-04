@@ -1,0 +1,97 @@
+# Mercearia do Sergio Andrew Farias RU: 555334
+
+# Inicio da função cadastrar produto
+listadeprodutos = []  # lista dos produtos cadastrados dentro do programa
+def cadastroprod(codigo):
+    print('Bem vindo ao cadastro de produtos')
+    print('O código do do produto a ser cadastrado é: '.format(codigo))
+    codigo = int(input('Entre com o codigo do produto: '))
+    nome = input('Entre com o nome do produto: ')
+    fab = input('Entre com o nome do fabricante: ')
+    valor = float(input('Entre com o valor do produto: '))
+    dicionarioprodut = {'Código': codigo,  # construção do dicionário
+                        'Produto': nome,
+                        'Fabricante': fab,
+                        'Valor': valor}
+    listadeprodutos.append(dicionarioprodut.copy())  # copia do dicionário
+# Fim da função cadastrar produto
+
+# Inicio da função consultar produto
+def consultarprod():
+    while True:
+        try:
+            print('Bem vindo a função de consulta de produtos')
+            opconsulta = int(input('Entre com o código desejado: \n'
+                                   '1 - Consultar todos os produtos \n'
+                                   '2 - Consultar produto por código \n'
+                                   '3 - Consultar produto por fabricante \n'
+                                   '4 - Retornar ao menu anterior \n'
+                                   'Sua escolha foi: '))
+#consulta a todos produtos:
+            if opconsulta == 1:
+                print('Bem vindo a consulta de todos os produtos')
+                for produto in listadeprodutos:  # selecionar cada dicionario da minha lista de produtos
+                    for key, value in produto.items():  # selecionar cada conjunto da chave
+                        print('{} : {}'.format(key, value))
+#consulta por código:
+            elif opconsulta == 2:
+                print('Consultar produto por código')
+                entrada = int(input('Digite o código do produto: '))
+                for produto in listadeprodutos:
+                    if (produto['Código'] == entrada):
+                        for key, value in produto.items():
+                            print('{} : {}'.format(key, value))
+#consulta por fabricante:
+            elif opconsulta == 3:
+                print('Consultar produto por fabricante')
+                entrada = input('Digite o nome do fabricante do produto: ')
+                for produto in listadeprodutos:
+                    if (produto['Fabricante'] == entrada):
+                        for key, value in produto.items():
+                            print('{} : {}'.format(key, value))
+#retornar ao menu anterior:
+            elif opconsulta == 4:
+                return
+        except ValueError:
+            print('Você digitou um código não númerico. Repita a operação')
+# Fim da função consultar produto
+
+# Inicio da função removerproduto
+def removerprod():
+    print('Bem vindo a função de remoção de produtos')
+    entrada = int(input('Digite o código do produto a ser removido: '))
+    for produto in listadeprodutos:
+        if (produto['Código'] == entrada):
+            listadeprodutos.remove(produto)
+            print('O produto foi removido')
+# Fim da função consultar produto
+
+# Inicio do main program
+print('Bem vindo a mercearia do Sergio Andrew Farias')
+codproduto = 0
+#funções do main program
+while True:
+    try:
+        opcao = int(input('Digite a opção desejada: \n'
+                          '1 - Cadastrar produto \n'
+                          '2 - Consultar produto \n'
+                          '3 - Remover produto \n'
+                          '4 - Sair \n'
+                          'A opção escolhida foi: '))
+        if opcao == 1:                              #chamar a função de cadastro de produto
+            codproduto = codproduto + 1
+            cadastroprod(codproduto)
+        elif opcao == 2:                            #chamar a função de consulta de produto
+            consultarprod()
+        elif opcao == 3:                            #chamar a função de remoção de produto
+            removerprod()
+        elif opcao == 4:                            #chamar a função de finalização do programa
+            print('Programa finalizado')
+            break
+        else:
+            print('Opção inválida, digite um dos números acima listados!')
+    except ValueError:
+        print('Você digitou um valor não númerico. Repita a operação')
+# Fim do main program
+
+
